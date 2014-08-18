@@ -28,8 +28,8 @@ func RateLimit(original io.ReadWriteCloser, limitrate int, maxburst int) *RateLi
 	go func() {
 		defer original.Close()
 		for {
-			time.Sleep(time.Second * time.Duration(100/limitrate))
-			for i := 0; i < 100; i++ {
+			time.Sleep(time.Second * time.Duration(10/limitrate))
+			for i := 0; i < 10; i++ {
 				select {
 				case <-tokench:
 				case <-stop:
